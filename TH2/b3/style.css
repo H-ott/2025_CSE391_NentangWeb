@@ -1,0 +1,99 @@
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: cursive;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 80px;
+            color: #333;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 60px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .card-content {
+            color: #777;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .card-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .card-position {
+            font-size: 0.9rem;
+            color: #3781e2;
+        }
+        
+        .text-content {
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .text-block {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        
+        .text-block.emphasized {
+            font-weight: bold;
+            color: #444;
+        }
+        block{
+            .content-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card, .text-content {
+                max-width: 100%;
+            }
+            
+            .main-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+        }
