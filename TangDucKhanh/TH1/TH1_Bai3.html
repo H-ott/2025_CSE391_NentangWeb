@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Điểm Thi Sinh Viên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 800px;
+        }
+        
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        th {
+            font-weight: bold;
+        }
+        
+        .student-header {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .exam-header {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .final-header {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .student-cell {
+            font-weight: bold;
+        }
+        
+        .student-section {
+            width: 200px;
+        }
+        
+        .exam-section {
+            width: 300px;
+        }
+        
+        .second-exam-section {
+            width: 300px;
+        }
+        
+        .final-section {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- First row - Main headers -->
+        <tr>
+            <th rowspan="2" colspan="2" class="student-header">Student</th>
+            <th colspan="4" class="exam-header">Exam</th>
+            <th colspan="4" class="exam-header">2nd Exam</th>
+            <th colspan="2" rowspan="2" class="final-header">Final Grade</th>
+        </tr>
+        
+        <!-- Second row - Sub headers -->
+        <tr>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Q3</th>
+            <th rowspan="2" colspan="1">Grade</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Q3</th>
+            <th rowspan="2" colspan="1">Grade</th>
+        </tr>
+        
+        <!-- Third row - Question weights -->
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>8</th>
+            <th>7</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>NR</th>
+            <th>R</th>
+        </tr>
+        
+        <!-- Data rows -->
+        <tr>
+            <td>80549061</td>
+            <td>John</td>
+            <td>70%</td>
+            <td>100%</td>
+            <td>100%</td>
+            <td>17.6</td>
+            <td colspan = "4"></td>
+            <td>17.6</td>
+            <td>18</td>
+        </tr>
+        
+        <tr>
+            <td>80549062</td>
+            <td>Mary</td>
+            <td>10%</td>
+            <td>50%</td>
+            <td>50%</td>
+            <td>6.8</td>
+            <td>100%</td>
+            <td>100%</td>
+            <td>50%</td>
+            <td>16.5</td>
+            <td>16.5</td>
+            <td>17</td>
+        </tr>
+        
+        <tr>
+            <td>80549063</td>
+            <td>Claire</td>
+            <td colspan = "4"></td>
+            <td>50%</td>
+            <td>50%</td>
+            <td>50%</td>
+            <td>10.0</td>
+            <td>10.0</td>
+            <td>10</td>
+        </tr>
+    </table>
+</body>
+</html>
