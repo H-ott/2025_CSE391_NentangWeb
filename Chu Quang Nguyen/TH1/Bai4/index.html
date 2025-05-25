@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Employee Information Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Basic Info Section -->
+      <div class="section">
+        <div class="section-title">Basic Info</div>
+
+        <div class="form-row">
+          <div class="form-label">Employee ID</div>
+          <div class="form-input">9</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Last Name</div>
+          <div class="form-input">Dodsworth</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">First Name</div>
+          <div class="form-input">
+            <div class="input-with-icon">
+              <input type="text" value="Anne" />
+              <span class="input-icon">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Gender</div>
+          <div class="form-input">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="gender" id="male" />
+                <label for="male">Male</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="gender" id="female" />
+                <label for="female">Female</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="gender" id="xxx" />
+                <label for="xxx">XXX</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="gender" id="zzz" checked />
+                <label for="zzz">ZZZ</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Title</div>
+          <div class="form-input">
+            <input type="text" value="Sales Representative" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Suffix</div>
+          <div class="form-input">
+            <input type="text" value="Ms." />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">BirthDate</div>
+          <div class="form-input">
+            <div class="input-with-icon">
+              <input type="text" value="1969-07-02 00:00:00" />
+              <span class="input-icon">(?)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">HireDate</div>
+          <div class="form-input">
+            <input type="text" value="1994-11-15 00:00:00" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">SSN # (if applicable)</div>
+          <div class="form-input">
+            <div class="input-with-icon">
+              <input type="text" />
+              <span class="input-icon">❓</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Reports To</div>
+          <div class="form-input">
+            <select>
+              <option selected>Buchanan</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Info Section -->
+      <div class="section">
+        <div class="section-title">Contact Info</div>
+
+        <div class="form-row">
+          <div class="form-label">Email</div>
+          <div class="form-input">
+            <input type="email" value="name@example.com" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Address</div>
+          <div class="form-input">
+            <input type="text" value="7 Houndstooth Rd." />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">City</div>
+          <div class="form-input">
+            <input type="text" value="London" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Region</div>
+          <div class="form-input">
+            <input type="text" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Postal Code</div>
+          <div class="form-input">
+            <input type="text" value="WG2 7LT" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Country</div>
+          <div class="form-input">
+            <select>
+              <option selected>Russian Federation</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">US Home Phone</div>
+          <div class="form-input">
+            <input type="tel" value="(234)234-2342" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Photo</div>
+          <div class="form-input">
+            <input type="text" value="EmpID9.bmp" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Optional Info Section -->
+      <div class="section">
+        <div class="section-title">Optional Info</div>
+
+        <div class="form-row">
+          <div class="form-label">Notes</div>
+          <div class="form-input">
+            <div class="editor-toolbar">
+              <button class="toolbar-button">B</button>
+              <button class="toolbar-button">I</button>
+              <button class="toolbar-button">S</button>
+              <button class="toolbar-button">U</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">≡</button>
+              <button class="toolbar-button">≡</button>
+              <button class="toolbar-button">≡</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">⇛</button>
+              <button class="toolbar-button">⇚</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">x²</button>
+              <button class="toolbar-button">x'</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">🔗</button>
+              <button class="toolbar-button">≡</button>
+              <button class="toolbar-button">≡</button>
+              <button class="toolbar-button">≡</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">⌘</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">📷</button>
+              <button class="toolbar-button">🎬</button>
+              <button class="toolbar-button">📊</button>
+              <span class="toolbar-separator"></span>
+              <button class="toolbar-button">❌</button>
+            </div>
+            <div class="editor-content">
+              Anne has a BA degree in English from St. Lawrence College. She is
+              fluent in French and German.ZZZ
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Preferred Shift</div>
+          <div class="form-input">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" name="shift" id="regular" />
+                <label for="regular">Regular</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" name="shift" id="gravy" checked />
+                <label for="gravy">Gravy Yard</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Active?</div>
+          <div class="form-input">
+            <div class="checkbox-option">
+              <input type="checkbox" id="active" checked />
+              <label for="active"></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-label">Are you human?</div>
+          <div class="form-input">
+            <div class="captcha">
+              <div class="captcha-image">TIDA₩O</div>
+              <div>Click to change</div>
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Footer -->
+      <div class="form-footer">
+        <div class="nav-buttons">
+          <div class="nav-btn">◄</div>
+          <div class="nav-btn">►</div>
+        </div>
+
+        <div class="required-note">* required</div>
+
+        <div class="form-buttons">
+          <button class="submit-btn">Submit</button>
+          <button class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
