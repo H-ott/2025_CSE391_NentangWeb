@@ -1,0 +1,48 @@
+.contact-container {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.contact-container h1 {
+  color: #007bff;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  font-size: 2.2rem;
+  margin-right: 15px;
+  color: #007bff;
+}
+
+.contact-item h3 {
+  margin: 0 0 5px 0;
+  font-weight: 600;
+  color: #444;
+}
+
+.contact-item a {
+  color: #007bff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
