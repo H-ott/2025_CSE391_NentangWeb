@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import EmployeeDetail from "./pages/EmployeeDetail";
+import Dashboard from './pages/Dashboard/Dashboard';
+import Analytics from './pages/Dashboard/Analytics';
+import Reports from './pages/Dashboard/Reports';
 
 function App() {
   return (
@@ -15,6 +18,13 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/employee/:id" element={<EmployeeDetail />} />
+        {/* Route cha */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          {/* Nested Routes */}
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="reports" element={<Reports />} />
+        </Route>
+
       </Routes>
     </Router>
   );

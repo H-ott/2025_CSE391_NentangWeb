@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
@@ -26,6 +26,10 @@ export default function Header() {
         >
           About
         </Link>
+        <Link to="/dashboard" className={({ isActive }) => (isActive ? "active" : "")}>
+          Dashboard
+        </Link >
+
       </nav>
       <div className="search-container">
         <input type="text" placeholder="Search..." />
