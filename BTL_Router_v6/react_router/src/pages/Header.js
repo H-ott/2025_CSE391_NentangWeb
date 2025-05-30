@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
@@ -7,25 +7,25 @@ export default function Header() {
     <header>
       <div className="logo">HR Management</div>
       <nav>
-        <NavLink
+        <Link
           to="/"
           end
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           Home
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to="/contact"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           Contact
-        </NavLink>
-        <NavLink
+        </Link>
+        <Link
           to="/about"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           About
-        </NavLink>
+        </Link>
       </nav>
       <div className="search-container">
         <input type="text" placeholder="Search..." />

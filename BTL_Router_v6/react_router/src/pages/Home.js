@@ -1,45 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './Home.css';
+import "./Home.css";
+
 export default function Home() {
   const navigate = useNavigate();
-  const initialEmployees = [
-    {
-      id: 1,
-      name: "Fatima Beatriz",
-      email: "Fatima Beatriz@gmail.com",
-      phone: "0985674321",
-      position: "Staff",
-    },
-    {
-      id: 2,
-      name: "Gabriel Hanna",
-      email: "Gabriel Hanna@gmail.com",
-      phone: "0353674231",
-      position: "Staff",
-    },
-    {
-      id: 3,
-      name: "Charles Diya",
-      email: "Charles Diya@gmail.com",
-      phone: "0347658833",
-      position: "Staff",
-    },
-    {
-      id: 4,
-      name: "Frank Lamdo",
-      email: "Frank Lamdo@gmail.com",
-      phone: "0975444768",
-      position: "Manager",
-    },
-    {
-      id: 5,
-      name: "Louis Tom",
-      email: "Louis Tom@gmail.com",
-      phone: "0789568223",
-      position: "Staff",
-    },
-  ];
+
+  // Lấy dữ liệu từ localStorage hoặc dùng danh sách mặc định
+  const savedEmployees = localStorage.getItem("employees");
+  const initialEmployees = savedEmployees
+    ? JSON.parse(savedEmployees)
+    : [
+        {
+          id: 1,
+          name: "Tăng Đức Khánh",
+          email: "khanh2mat@gmail.com",
+          phone: "0985674321",
+          position: "Staff",
+          gender: "Male",
+          birthYear: 2005,
+          hometown: "Hải Phòng 2",
+        },
+        {
+          id: 2,
+          name: "Nguyễn Đình Hoàng",
+          email: "hoangnhatgai@gmail.com",
+          phone: "0353674231",
+          position: "Staff",
+          gender: "Female",
+          birthYear: 1998,
+          hometown: "Thanh Hóa",
+        },
+        {
+          id: 3,
+          name: "Nguyễn Nam Thắng",
+          email: "thangvipphuxuyen1@gmail.com",
+          phone: "0347658833",
+          position: "Staff",
+          gender: "Male",
+          birthYear: 1995,
+          hometown: "Hà Nội 2",
+        },
+        {
+          id: 4,
+          name: "Chu Quang Nguyên",
+          email: "chuquangnguyen2005@gmail.com",
+          phone: "0975444768",
+          position: "Manager",
+          gender: "Male",
+          birthYear: 2005,
+          hometown: "Nghệ An",
+        },
+        {
+          id: 5,
+          name: "Louis Tom",
+          email: "Louis Tom@gmail.com",
+          phone: "0789568223",
+          position: "Staff",
+          gender: "Male",
+          birthYear: 1995,
+          hometown: "Ho Chi Minh City",
+        },
+      ];
 
   const [employees, setEmployees] = useState(initialEmployees);
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,7 +72,15 @@ export default function Home() {
     email: "",
     phone: "",
     position: "Staff",
+    gender: "",
+    birthYear: "",
+    hometown: "",
   });
+
+  // Cập nhật localStorage mỗi khi employees thay đổi
+  useEffect(() => {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }, [employees]);
 
   // Handle open add modal
   const openAddModal = () => {
@@ -61,6 +90,9 @@ export default function Home() {
       email: "",
       phone: "",
       position: "Staff",
+      gender: "",
+      birthYear: "",
+      hometown: "",
     });
     setCurrentEmployee(null);
     setModalOpen(true);
@@ -68,7 +100,10 @@ export default function Home() {
 
   // Handle open edit modal
   const openEditModal = (employee) => {
-    setFormData(employee);
+    setFormData({
+      ...employee,
+      birthYear: employee.birthYear ? employee.birthYear.toString() : "",
+    });
     setCurrentEmployee(employee);
     setModalOpen(true);
   };
@@ -85,15 +120,23 @@ export default function Home() {
   // Save employee (add or update)
   const saveEmployee = (e) => {
     e.preventDefault();
-    if (formData.id) {
+
+    const dataToSave = {
+      ...formData,
+      birthYear: Number(formData.birthYear),
+    };
+
+    if (dataToSave.id) {
       // Update
       setEmployees((prev) =>
-        prev.map((emp) => (emp.id === formData.id ? formData : emp))
+        prev.map((emp) => (emp.id === dataToSave.id ? dataToSave : emp))
       );
     } else {
       // Add new with id nextId
-      const newId = Math.max(...employees.map((e) => e.id)) + 1;
-      setEmployees((prev) => [...prev, { ...formData, id: newId }]);
+      const newId = employees.length
+        ? Math.max(...employees.map((e) => e.id)) + 1
+        : 1;
+      setEmployees((prev) => [...prev, { ...dataToSave, id: newId }]);
     }
     closeModal();
   };
@@ -163,8 +206,9 @@ export default function Home() {
               <td>
                 <button
                   className="view-btn"
-                  onClick={() => navigate(`/employee/${emp.id}`)}
-                  style={{ cursor: "pointer" }}
+                  onClick={() =>
+                    navigate(`/employee/${emp.id}`, { state: emp })
+                  }
                 >
                   View
                 </button>
@@ -186,6 +230,7 @@ export default function Home() {
             </div>
             <form onSubmit={saveEmployee}>
               <input type="hidden" name="id" value={formData.id || ""} />
+
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
@@ -197,6 +242,7 @@ export default function Home() {
                   required
                 />
               </div>
+
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
@@ -208,6 +254,7 @@ export default function Home() {
                   required
                 />
               </div>
+
               <div className="form-group">
                 <label htmlFor="phone">Phone</label>
                 <input
@@ -219,6 +266,7 @@ export default function Home() {
                   required
                 />
               </div>
+
               <div className="form-group">
                 <label htmlFor="position">Position</label>
                 <select
@@ -234,6 +282,47 @@ export default function Home() {
                   <option value="HR">HR</option>
                 </select>
               </div>
+
+              <div className="form-group">
+                <label htmlFor="gender">Gender</label>
+                <select
+                  name="gender"
+                  id="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="birthYear">Birth Year</label>
+                <input
+                  name="birthYear"
+                  id="birthYear"
+                  type="number"
+                  value={formData.birthYear}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="hometown">Hometown</label>
+                <input
+                  name="hometown"
+                  id="hometown"
+                  type="text"
+                  value={formData.hometown}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
               <button type="submit" className="submit-btn">
                 Save
               </button>

@@ -1,57 +1,40 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
+import "./EmployeeDetail.css";
 
 export default function EmployeeDetail() {
-  const { id } = useParams(); // Lấy id từ url
+  const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Danh sách nhân viên demo (bạn có thể lấy dữ liệu từ API hoặc Context nếu có)
-  const employees = [
-    {
-      id: 1,
-      name: "Fatima Beatriz",
-      email: "Fatima Beatriz@gmail.com",
-      phone: "0985674321",
-      position: "Staff",
-    },
-    {
-      id: 2,
-      name: "Gabriel Hanna",
-      email: "Gabriel Hanna@gmail.com",
-      phone: "0353674231",
-      position: "Staff",
-    },
-    {
-      id: 3,
-      name: "Charles Diya",
-      email: "Charles Diya@gmail.com",
-      phone: "0347658833",
-      position: "Staff",
-    },
-    {
-      id: 4,
-      name: "Frank Lamdo",
-      email: "Frank Lamdo@gmail.com",
-      phone: "0975444768",
-      position: "Manager",
-    },
-    {
-      id: 5,
-      name: "Louis Tom",
-      email: "Louis Tom@gmail.com",
-      phone: "0789568223",
-      position: "Staff",
-    },
-  ];
+  const [employee, setEmployee] = useState(location.state || null);
 
-  // Tìm nhân viên theo id (id từ url là string, cần chuyển sang number)
-  const employee = employees.find((e) => e.id === Number(id));
+  useEffect(() => {
+    if (!location.state || location.state.id !== Number(id)) {
+      // Lấy dữ liệu nhân viên từ localStorage
+      const savedEmployees = localStorage.getItem("employees");
+      let employees = [];
+      if (savedEmployees) {
+        try {
+          employees = JSON.parse(savedEmployees);
+        } catch {
+          employees = [];
+        }
+      }
+
+      const found = employees.find((e) => e.id === Number(id));
+      setEmployee(found);
+    }
+  }, [id, location.state]);
 
   if (!employee) {
     return (
       <main style={{ padding: "20px" }}>
         <h2>Employee not found!</h2>
-        <button onClick={() => navigate(-1)} style={{ cursor: "pointer" }}>
+        <button
+          onClick={() => navigate(-1)}
+          style={{ cursor: "pointer", padding: "8px 16px" }}
+        >
           Go Back
         </button>
       </main>
@@ -59,30 +42,64 @@ export default function EmployeeDetail() {
   }
 
   return (
-    <main style={{ padding: "20px" }}>
-      <h1>Employee Detail</h1>
-      <p>
-        <strong>ID:</strong> {employee.id}
-      </p>
-      <p>
-        <strong>Name:</strong> {employee.name}
-      </p>
-      <p>
-        <strong>Email:</strong> {employee.email}
-      </p>
-      <p>
-        <strong>Phone:</strong> {employee.phone}
-      </p>
-      <p>
-        <strong>Position:</strong> {employee.position}
-      </p>
-
-      <button
-        onClick={() => navigate(-1)}
-        style={{ marginTop: "20px", cursor: "pointer" }}
-      >
-        Back
-      </button>
-    </main>
+    <div className="fancy-container">
+      <div className="fancy-card">
+        <div className="fancy-header">
+          <img
+            src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
+              employee.name
+            )}&background=ff6f61&color=fff&size=128`}
+            alt="avatar"
+            className="fancy-avatar"
+          />
+          <h2>{employee.name}</h2>
+          <div className="fancy-badge">{employee.position}</div>
+        </div>
+        <div className="fancy-body">
+          <p>
+            <strong>ID:</strong> {employee.id}
+          </p>
+          <p>
+            <strong>Email:</strong> {employee.email}
+          </p>
+          <p>
+            <strong>Phone:</strong> {employee.phone}
+          </p>
+          {employee.gender && (
+            <p>
+              <strong>Gender:</strong>{" "}
+              {employee.gender === "Male"
+                ? "Nam"
+                : employee.gender === "Female"
+                ? "Nữ"
+                : "Khác"}
+            </p>
+          )}
+          {employee.birthYear && (
+            <>
+              <p>
+                <strong>Birth Year:</strong> {employee.birthYear}
+              </p>
+              <p>
+                <strong>Age:</strong>{" "}
+                {new Date().getFullYear() - employee.birthYear} tuổi
+              </p>
+            </>
+          )}
+          {employee.hometown && (
+            <p>
+              <strong>Hometown:</strong> {employee.hometown}
+            </p>
+          )}
+        </div>
+        <button
+          className="fancy-back"
+          onClick={() => navigate(-1)}
+          style={{ cursor: "pointer" }}
+        >
+          ⬅ Back to List
+        </button>
+      </div>
+    </div>
   );
 }
