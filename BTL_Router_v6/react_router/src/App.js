@@ -18,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/employee/:id" element={<EmployeeDetail />} />
+
         {/* Route cha */}
         <Route path="/dashboard" element={<Dashboard />}>
           {/* Nested Routes */}

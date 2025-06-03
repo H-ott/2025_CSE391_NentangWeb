@@ -1,25 +1,87 @@
 export default function Reports() {
+  const reports = [
+    {
+      title: 'Sales Summary',
+      description: 'Overview of product sales from Jan to May.',
+      date: '2025-06-01',
+    },
+    {
+      title: 'User Engagement',
+      description: 'User activity and retention report.',
+      date: '2025-05-25',
+    },
+    {
+      title: 'System Health Check',
+      description: 'Monthly report on server uptime and errors.',
+      date: '2025-05-20',
+    },
+  ];
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">📄 Reports Overview</h2>
+    <div style={styles.container}>
+      <h3 style={styles.heading}>📄 Reports Center</h3>
+      <p style={styles.subtitle}>Access detailed business and system reports below.</p>
 
-      <div className="space-y-4">
-        <div className="bg-white border p-4 rounded-xl shadow hover:shadow-md transition">
-          <h3 className="text-lg font-semibold">Monthly Sales Report</h3>
-          <p className="text-sm text-gray-600">Updated: May 2025</p>
-          <button className="mt-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">
-            View Report
-          </button>
-        </div>
-
-        <div className="bg-white border p-4 rounded-xl shadow hover:shadow-md transition">
-          <h3 className="text-lg font-semibold">User Behavior Report</h3>
-          <p className="text-sm text-gray-600">Updated: May 2025</p>
-          <button className="mt-2 px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">
-            View Report
-          </button>
-        </div>
+      <div style={styles.cardGrid}>
+        {reports.map((report, index) => (
+          <div key={index} style={styles.card}>
+            <h4 style={styles.cardTitle}>{report.title}</h4>
+            <p style={styles.cardDesc}>{report.description}</p>
+            <p style={styles.cardDate}>📅 {report.date}</p>
+            <button style={styles.button}>View Report</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
+
+const styles = {
+  container: {
+    fontFamily: 'Arial, sans-serif',
+    color: '#333',
+  },
+  heading: {
+    fontSize: '26px',
+    marginBottom: '8px',
+  },
+  subtitle: {
+    color: '#666',
+    marginBottom: '24px',
+  },
+  cardGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '20px',
+  },
+  card: {
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    borderRadius: '10px',
+    padding: '20px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+    transition: 'transform 0.2s',
+  },
+  cardTitle: {
+    fontSize: '18px',
+    marginBottom: '10px',
+    color: '#007BFF',
+  },
+  cardDesc: {
+    fontSize: '14px',
+    marginBottom: '8px',
+  },
+  cardDate: {
+    fontSize: '13px',
+    color: '#999',
+    marginBottom: '12px',
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    color: '#fff',
+    border: 'none',
+    padding: '8px 14px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
+};
