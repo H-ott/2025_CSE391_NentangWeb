@@ -7,60 +7,7 @@ export default function Home() {
 
   // Lấy dữ liệu từ localStorage hoặc dùng danh sách mặc định
   const savedEmployees = localStorage.getItem("employees");
-  const initialEmployees = savedEmployees
-    ? JSON.parse(savedEmployees)
-    : [
-        {
-          id: 1,
-          name: "Tăng Đức Khánh",
-          email: "khanh2mat@gmail.com",
-          phone: "0985674321",
-          position: "Staff",
-          gender: "Male",
-          birthYear: 2005,
-          hometown: "Hải Phòng 2",
-        },
-        {
-          id: 2,
-          name: "Nguyễn Đình Hoàng",
-          email: "hoangnhatgai@gmail.com",
-          phone: "0353674231",
-          position: "Staff",
-          gender: "Female",
-          birthYear: 1998,
-          hometown: "Thanh Hóa",
-        },
-        {
-          id: 3,
-          name: "Nguyễn Nam Thắng",
-          email: "thangvipphuxuyen1@gmail.com",
-          phone: "0347658833",
-          position: "Staff",
-          gender: "Male",
-          birthYear: 1995,
-          hometown: "Hà Nội 2",
-        },
-        {
-          id: 4,
-          name: "Chu Quang Nguyên",
-          email: "chuquangnguyen2005@gmail.com",
-          phone: "0975444768",
-          position: "Manager",
-          gender: "Male",
-          birthYear: 2005,
-          hometown: "Nghệ An",
-        },
-        {
-          id: 5,
-          name: "Louis Tom",
-          email: "Louis Tom@gmail.com",
-          phone: "0789568223",
-          position: "Staff",
-          gender: "Male",
-          birthYear: 1995,
-          hometown: "Ho Chi Minh City",
-        },
-      ];
+  const initialEmployees = savedEmployees ? JSON.parse(savedEmployees) : [];
 
   const [employees, setEmployees] = useState(initialEmployees);
   const [modalOpen, setModalOpen] = useState(false);
